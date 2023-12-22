@@ -1107,6 +1107,38 @@ StartCodec(
 	cs35l41_reg_write(pDevice, CS35L41_TEST_KEY_CTL, 0x000000AA);
 
 	switch (reg_revid) {
+	case CS35L41_REVID_A0:
+		cs35l41_reg_write(pDevice, 0x00003854, 0x05180240);
+		cs35l41_reg_write(pDevice, CS35L41_VIMON_SPKMON_RESYNC, 0x00000000);
+		cs35l41_reg_write(pDevice, 0x00004310, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_VPVBST_FS_SEL, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_OTP_TRIM_30, 0x9091A1C8);
+		cs35l41_reg_write(pDevice, 0x00003014, 0x0200EE0E);
+		cs35l41_reg_write(pDevice, CS35L41_BSTCVRT_DCM_CTRL, 0x00000051);
+		cs35l41_reg_write(pDevice, 0x00000054, 0x00000004);
+		cs35l41_reg_write(pDevice, CS35L41_IRQ1_DB3, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_IRQ2_DB3, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_DSP1_YM_ACCEL_PL0_PRI, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_DSP1_XM_ACCEL_PL0_PRI, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_PWR_CTRL2, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_IRQ2_DB3, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_ASP_TX3_SRC, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_ASP_TX4_SRC, 0x00000000);
+     	Cs35l41Print(DEBUG_LEVEL_INFO, DBG_PNP,"REVID: CS35L41_REVID_A0");
+		break;
+	case CS35L41_REVID_B0:
+		cs35l41_reg_write(pDevice, CS35L41_VIMON_SPKMON_RESYNC, 0x00000000);
+		cs35l41_reg_write(pDevice, 0x00004310, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_VPVBST_FS_SEL, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_BSTCVRT_DCM_CTRL, 0x00000051);
+		cs35l41_reg_write(pDevice, CS35L41_DSP1_YM_ACCEL_PL0_PRI, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_DSP1_XM_ACCEL_PL0_PRI, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_PWR_CTRL2, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_AMP_GAIN_CTRL, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_ASP_TX3_SRC, 0x00000000);
+		cs35l41_reg_write(pDevice, CS35L41_ASP_TX4_SRC, 0x00000000);
+		Cs35l41Print(DEBUG_LEVEL_INFO, DBG_PNP,"REVID: CS35L41_REVID_B0");
+		break;
 	case CS35L41_REVID_B2:
 		cs35l41_reg_write(pDevice, CS35L41_VIMON_SPKMON_RESYNC, 0x00000000);
 		cs35l41_reg_write(pDevice, 0x00004310, 0x00000000);
@@ -1118,6 +1150,7 @@ StartCodec(
 		cs35l41_reg_write(pDevice, CS35L41_AMP_GAIN_CTRL, 0x00000000);
 		cs35l41_reg_write(pDevice, CS35L41_ASP_TX3_SRC, 0x00000000);
 		cs35l41_reg_write(pDevice, CS35L41_ASP_TX4_SRC, 0x00000000);
+		Cs35l41Print(DEBUG_LEVEL_INFO, DBG_PNP,"REVID: CS35L41_REVID_B2");
 		break;
 	}
 
