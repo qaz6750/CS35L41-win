@@ -736,6 +736,9 @@ static NTSTATUS cs35l41_pcm_hw_params(PCS35L41_CONTEXT pDevice)
 
 	cs35l41_component_set_sysclk(pDevice, CS35L41_PLLSRC_SCLK, Q6AFE_LPASS_IBIT_CLK_1_P536_MHZ);
 
+	/*
+	 * stream == SNDRV_PCM_STREAM_PLAYBACK
+	*/
 	cs35l41_reg_update_bits(pDevice, CS35L41_SP_FORMAT,
 		CS35L41_ASP_WIDTH_RX_MASK,
 		asp_width << CS35L41_ASP_WIDTH_RX_SHIFT);
@@ -1215,8 +1218,11 @@ StartCodec(
 	/* Required */
 	cs35l41_boost_config(pDevice, bst_ind, bst_cap, bst_ipk);
 
-	//cirrus,asp-sdout-hiz
-	INT32 dout_hiz = 3;
+	/* cirrus,asp-sdout-hiz
+	 * XiaoMi9 does not have a value configured for asp-sdout hiz, 
+	 * So it defaults to -1 according to downstream driver settings.
+	*/ 
+	INT32 dout_hiz = -1;
 
 	/* Optional */
 	if (dout_hiz <= CS35L41_ASP_DOUT_HIZ_MASK && dout_hiz >= 0)
