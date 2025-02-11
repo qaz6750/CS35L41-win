@@ -32,7 +32,10 @@ cs35l41.sys  = 1,,
 ; Decorated model section take precedence over undecorated 
 ; ones on XP and later.
 [Standard.NT$ARCH$]
-%cs35l41.DeviceDesc%=cs35l41_Device, ACPI\10133541
+; Xiaomi Pad 5
+%cs35l41.DeviceDesc% = cs35l41_Device, ACPI\10133541
+; Xiaomi 9
+%cs35l41.DeviceDesc% = cs35l41_Device, ACPI\CS35L41
 
 [cs35l41_Device.NT]
 CopyFiles=Drivers_Dir
